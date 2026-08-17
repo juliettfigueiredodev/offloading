@@ -9,7 +9,7 @@ if torch.cuda.is_available():
 else:
     print("AVISO: Rodando em CPU. A inferência pode ser lenta.")
 
-model = YOLO('yololln.pt')
+model = YOLO('yolo11n.pt')
 source_path = "video.mp4"
 cap = cv2.VideoCapture(source_path)
 
