@@ -23,6 +23,8 @@ while True:
         results = model.predict(frame_recebido, conf=0.5, classes=vehicle_classes, verbose=False)
         contagem = len(results[0].boxes)
         
+        print(f"[*] Frame recebido de {endereco_cliente[0]} -> {contagem} veiculo(s) detectado(s)")
+
         payload = {"carros": contagem}
         json_str = json.dumps(payload)
         dados_resposta = json_str.encode()
