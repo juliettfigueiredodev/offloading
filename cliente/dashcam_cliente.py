@@ -2,7 +2,7 @@ import cv2
 import socket
 import json
 
-SERVER_IP = '127.0.0.1'
+SERVER_IP = '127.0.0.1'      # No teste entre redes distintas, o IP foi alterado para o IP virtual atribuído pelo Tailscale à máquina
 SERVER_PORT_VIDEO = 9000
 SERVER_PORT_JSON = 9001 # O cliente vai escutar o retorno nessa porta
 
@@ -13,7 +13,7 @@ sock_envio = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)       # AF_INET in
 sock_recebimento = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # SOCK_DGRAM define o protocolo UDP
 
 # Associa o socket de recebimento ao IP local e à porta 9001
-sock_recebimento.bind((SERVER_IP, SERVER_PORT_JSON))
+sock_recebimento.bind(('', SERVER_PORT_JSON))   # Coloquei o bind para ele escutar de forma genérica (local ou rede).
 
 # Tempo máximo de espera pelo JSON
 # Evita que o programa fique travado/bloqueado esperando dados e congele a exibição do vídeo.
